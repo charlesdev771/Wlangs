@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Word List',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: 'Wlangs app',
+      theme: ThemeData(primarySwatch: Colors.purple),
       home: WordListScreen(),
     );
   }
@@ -35,7 +35,7 @@ class _WordListScreenState extends State<WordListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Word List')),
+      appBar: AppBar(title: Text('Welcome, user!')),
       body: FutureBuilder<List<Word>>(
         future: wordList,
         builder: (context, snapshot) {
