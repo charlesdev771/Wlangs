@@ -54,11 +54,13 @@ class _WordScreenState extends State<WordScreen>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 150, 120, 255),
-        title: Text(
+        title: Center(
+        child:   Text(
           "Wlangs",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
+      ),
       ),
       body: FutureBuilder<List<Word>>(
         future: wordList,
@@ -97,7 +99,7 @@ class _WordScreenState extends State<WordScreen>
                   
                   SizedBox(height: 20),
 
-                Text("Your word is: ")],
+                Text("Your in italian word is: ciao that the significant is: hello!")],
               ),
             )
             );
