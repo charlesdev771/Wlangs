@@ -1,11 +1,16 @@
 from django.db import models
 
-class Words(models.Model):
-    
-    word = models.TextField(max_length=50)
-    lang_origin = models.IntegerField() #1 = english, 2 = spanish, 3 = italian
-
+class Language(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.PositiveIntegerField(unique=True)  # Representa o código numérico do idioma
 
     def __str__(self):
-        
-        return self.word    
+        return self.name
+
+class Word(models.Model):
+    word = models.CharField(max_length=50)
+    translation = models.CharField(max_length=50, null=True, blank=True)  # Permitir nulo e em branco
+    lang_origin = models.IntegerField()
+
+    def __str__(self):
+        return self.word

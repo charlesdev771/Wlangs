@@ -1,13 +1,12 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import WordViewSet
-#from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
-router = DefaultRouter()
-router.register(r'words', WordViewSet)
+from django.urls import path
+from .views import WordViewSet, LanguageViewSet
 
 urlpatterns = [
-    path('', include(router.urls)),
-    #path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    #path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    # Endpoints para Language
+    path('languages/', LanguageViewSet.as_view({'get': 'list'}), name='language-list'),
+    path('language/<int:pk>/', LanguageViewSet.as_view({'get': 'retrieve'}), name='language-detail'),
+
+    # Endpoints para Word
+    path('words/', WordViewSet.as_view({'get': 'list', 'post': 'create'}), name='word-list'),
+    path('word/<int:pk>/', WordViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='word-detail'),
 ]

@@ -1,12 +1,24 @@
 from rest_framework import viewsets
-from .models import Words
+from .models import Word
 from .serializers import WordSerializer
-#from rest_framework.permissions import IsAuthenticated
-# Create your views here.
 
-
+from rest_framework import viewsets
+from .models import Language
+from .serializers import LanguageSerializer
 class WordViewSet(viewsets.ModelViewSet):
-
-    queryset = Words.objects.all()
     serializer_class = WordSerializer
-    #permission_classes = [IsAuthenticated]
+    queryset = Word.objects.all()
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        lang_origin = self.request.query_params.get('lang_origin')
+        if lang_origin:
+            queryset = queryset.filter(lang_origin=lang_origin)
+        return queryset
+    
+    
+
+
+class LanguageViewSet(viewsets.ModelViewSet):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
