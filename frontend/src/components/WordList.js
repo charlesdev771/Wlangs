@@ -16,9 +16,9 @@ const WordList = () => {
       <h2 className="mt-4">Word List</h2>
       <select className="form-control mt-3" onChange={(e) => setLangOrigin(e.target.value)}>
         <option value="">Select Language</option>
-        <option value="7">English</option>
-        <option value="8">Spanish</option>
-        <option value="9">Italian</option>
+        <option value="1">English</option>
+        <option value="2">Spanish</option>
+        <option value="3">Italian</option>
       </select>
       <ul className="list-group mt-3">
         {words.map((word) => (

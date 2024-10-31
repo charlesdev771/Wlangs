@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { getRandomWord } from '../services/api';
 
 const WordDetail = () => {
+
   const [word, setWord] = useState(null);
 
   const fetchRandomWord = () => {
     getRandomWord().then(setWord);
+  
   };
 
   return (
